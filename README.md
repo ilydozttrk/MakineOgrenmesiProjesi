@@ -40,3 +40,12 @@ Veri setinde sayısal değerler `object` (string) olarak saklanmış ve "1,250" 
 ```python
 # Virgülleri silme ve string temizliği
 df['vote_count'] = df['vote_count'].astype(str).str.replace(',', '', regex=False)
+
+##💻 Web Arayüzü ve Öneri Algoritmaları (UI & Recommendation Engine)
+Veri temizleme aşamasından sonra, kullanıcıların verilerle etkileşime geçebilmesi ve kişiselleştirilmiş öneriler alabilmesi için Streamlit tabanlı interaktif bir web arayüzü geliştirilmiştir.🚀 Arayüz ÖzellikleriDinamik Dashboard: Streamlit ve Plotly Express kullanılarak veri dağılımı histogramları interaktif olarak sunulmuştur.Çoklu Sekme Yapısı: "Anasayfa", "Yazar Öneri Sistemi" ve "Kitaplar & Arama" olmak üzere modüler bir yapı kurulmuştur.Özelleştirilmiş CSS: Kullanıcı deneyimini artırmak için arayüz elementleri (sekmeler, metrikler) özel CSS kodları ile modernize edilmiştir.🧠 Kullanılan AlgoritmalarProjenin arayüz katmanında çalışan öneri motoru, 3 temel matematiksel yaklaşımı kullanmaktadır:1. TF-IDF ve Kosinüs Benzerliği (Content-Based Filtering)Kullanıcı bir yazar seçtiğinde, sistem yazarın biyografisini analiz eder. scikit-learn kütüphanesi kullanılarak metinler vektörize edilir ve matematiksel benzerlik hesaplanır.Python# Biyografileri sayısal vektörlere dönüştürme
+tfidf = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf.fit_transform(df['biography'])
+
+# Yazarlar arası açıyı (benzerliği) hesaplama
+cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+2. Weighted Rating (Ağırlıklı Puanlama - IMDB Formülü)Basit ortalama puan yanıltıcı olabileceğinden (az oylu yüksek puanlar vs.), "En İyiler" listesi oluşturulurken IMDB'nin kullandığı Bayesyen Ağırlıklı Puanlama formülü sisteme entegre edilmiştir.$$\text{Weighted Rating (WR)} = \left( \frac{v}{v+m} \cdot R \right) + \left( \frac{m}{v+m} \cdot C \right)$$v: Oy sayısım: Listeye girmek için gereken minimum oy eşiğiR: Kitabın ortalama puanıC: Tüm veri setinin ortalama puanı3. Bulanık Arama ve FiltrelemeKullanıcı kitap ararken tam ismi hatırlamak zorunda değildir. String eşleşme algoritmaları ile anahtar kelime içeren tüm sonuçlar filtrelenir ve anında listelenir.
