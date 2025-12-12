@@ -84,3 +84,11 @@ Kullanıcı kitap ararken tam ismi hatırlamak zorunda değildir. String eşleş
 ```python
 # Büyük/küçük harf duyarsız arama (Case insensitive search)
 sonuclar = df_books[df_books['name'].str.contains(arama, case=False, na=False)]
+```
+
+## 🚀 Projeyi Çalıştırma 
+
+Gerekli kütüphanelerin yüklü olduğundan emin olduktan sonra, terminal veya komut satırında (CMD) proje klasörüne gelerek aşağıdaki komutu çalıştırınız:
+
+```bash
+streamlit run arayüz.py
