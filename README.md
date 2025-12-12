@@ -41,7 +41,8 @@ Veri setinde sayısal değerler `object` (string) olarak saklanmış ve "1,250" 
 # Virgülleri silme ve string temizliği
 df['vote_count'] = df['vote_count'].astype(str).str.replace(',', '', regex=False)
 ```
-##💻 Web Arayüzü ve Öneri Algoritmaları (UI & Recommendation Engine)
+#💻 Web Arayüzü ve Öneri Algoritmaları (UI & Recommendation Engine)
+
 Veri temizleme aşamasından sonra, kullanıcıların verilerle etkileşime geçebilmesi ve kişiselleştirilmiş öneriler alabilmesi için Streamlit tabanlı interaktif bir web arayüzü geliştirilmiştir.🚀 Arayüz ÖzellikleriDinamik Dashboard: Streamlit ve Plotly Express kullanılarak veri dağılımı histogramları interaktif olarak sunulmuştur.Çoklu Sekme Yapısı: "Anasayfa", "Yazar Öneri Sistemi" ve "Kitaplar & Arama" olmak üzere modüler bir yapı kurulmuştur.Özelleştirilmiş CSS: Kullanıcı deneyimini artırmak için arayüz elementleri (sekmeler, metrikler) özel CSS kodları ile modernize edilmiştir.🧠 Kullanılan AlgoritmalarProjenin arayüz katmanında çalışan öneri motoru, 3 temel matematiksel yaklaşımı kullanmaktadır:1. TF-IDF ve Kosinüs Benzerliği (Content-Based Filtering)Kullanıcı bir yazar seçtiğinde, sistem yazarın biyografisini analiz eder. scikit-learn kütüphanesi kullanılarak metinler vektörize edilir ve matematiksel benzerlik hesaplanır.Python# Biyografileri sayısal vektörlere dönüştürme
 tfidf = TfidfVectorizer(stop_words='english')
 tfidf_matrix = tfidf.fit_transform(df['biography'])
