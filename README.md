@@ -1,8 +1,11 @@
 # 📚 Kitap ve Yazar Öneri Sistemi (Book Recommendation & Popularity Analysis)
 
 **Durum:** Tamamlandı ✅
+
 **Dil:** Python 3.13.5
+
 **Geliştirme Ortamı:** Jupyter Notebook
+
 **Kütüphaneler:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
 
 Bu proje, üçüncü sınıf **Makine Öğrenmesi** dersi dönem sonu çalışması kapsamında geliştirilmiş olup, kitaplara ait puanlama ve etkileşim verilerini kullanarak **kitap popülerliği tahmini** yapan ve bu tahmin üzerinden **öneri sistemlerine altyapı oluşturmayı** amaçlayan bir makine öğrenmesi projesidir.
